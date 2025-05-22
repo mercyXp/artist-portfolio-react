@@ -28,6 +28,21 @@ artworks = [
         "title": "Timeless Look",
         "image": "/static/images/gallery/art5.jpeg",
         "description": "Pencil on Toned Paper · 6.5 hours"
+    },
+    {
+        "title": "Timeless Look",
+        "image": "/static/images/gallery/art6.jpeg",
+        "description": "Pencil on Toned Paper · 6.5 hours"
+    },
+    {
+        "title": "Timeless Look",
+        "image": "/static/images/gallery/art7.jpeg",
+        "description": "Pencil on Toned Paper · 6.5 hours"
+    },
+    {
+        "title": "Timeless Look",
+        "image": "/static/images/gallery/art8.jpeg",
+        "description": "Pencil on Toned Paper · 6.5 hours"
     }
 ]
 
