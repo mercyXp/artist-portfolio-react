@@ -19,15 +19,15 @@ artworks = [
         "image": "/static/images/gallery/art3.jpeg",
         "description": "Charcoal · 4.5 hours"
     },
-     {
-        "title": "Silent Gaze",
+    {
+        "title": "Morning Light",
         "image": "/static/images/gallery/art4.jpeg",
-        "description": "Charcoal · 4.5 hours"
+        "description": "Graphite Sketch · 4 hours"
     },
-     {
-        "title": "Silent Gaze",
+    {
+        "title": "Timeless Look",
         "image": "/static/images/gallery/art5.jpeg",
-        "description": "Charcoal · 4.5 hours"
+        "description": "Pencil on Toned Paper · 6.5 hours"
     }
 ]
 
@@ -37,9 +37,10 @@ artworks = [
 def home():
     return render_template('index.html')
 
-@app.route("/api/artworks")
-def get_artworks():
+@app.route('/api/featured-artworks')
+def featured_artworks():
     return jsonify(artworks)
+
 
 
 if __name__ == '__main__':
