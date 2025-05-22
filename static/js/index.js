@@ -1,5 +1,7 @@
+// Feather Icons + Mobile Toggle Script 
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Replace all feather icons
   feather.replace();
 
   const toggleBtn = document.getElementById("menu-toggle");
@@ -8,12 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let menuOpen = false;
 
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", function () {
-      menuOpen = !menuOpen;
-      mobileMenu.classList.toggle("hidden");
-      menuIcon.setAttribute("data-feather", menuOpen ? "x" : "menu");
-      feather.replace(); // Re-render icons
-    });
-  }
+  toggleBtn.addEventListener("click", () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle("hidden");
+
+    // Toggle feather icon (menu ↔ x)
+    menuIcon.setAttribute("data-feather", menuOpen ? "x" : "menu");
+
+    // Replace icons again after DOM change
+    feather.replace();
+  });
 });
