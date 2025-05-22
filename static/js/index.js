@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // Background Images for the Hero Section
 const hero = document.getElementById('hero');
   const images = [
-    '/static/images/hero1.jpg',
-    '/static/images/hero2.jpg',
+    '/static/images/hero1.png',
+    '/static/images/hero2.png',
     '/static/images/hero3.jpg',
     '/static/images/hero4.jpg'
   ];
