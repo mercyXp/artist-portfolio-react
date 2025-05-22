@@ -6,27 +6,27 @@ app = Flask(__name__)
 artworks = [
     {
         "title": "Gentle Soul",
-        "image": "/static/images/gallery/art1.jpg",
+        "image": "/static/images/gallery/art1.jpeg",
         "description": "Pencil Sketch · 5 hours"
     },
     {
         "title": "Memories",
-        "image": "/static/images/gallery/art2.jpg",
+        "image": "/static/images/gallery/art2.jpeg",
         "description": "Digital Illustration · 6 hours"
     },
     {
         "title": "Silent Gaze",
-        "image": "/static/images/gallery/art3.jpg",
+        "image": "/static/images/gallery/art3.jpeg",
         "description": "Charcoal · 4.5 hours"
     },
      {
         "title": "Silent Gaze",
-        "image": "/static/images/gallery/art4.jpg",
+        "image": "/static/images/gallery/art4.jpeg",
         "description": "Charcoal · 4.5 hours"
     },
      {
         "title": "Silent Gaze",
-        "image": "/static/images/gallery/art5.jpg",
+        "image": "/static/images/gallery/art5.jpeg",
         "description": "Charcoal · 4.5 hours"
     }
 ]
