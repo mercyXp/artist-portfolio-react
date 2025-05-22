@@ -72,44 +72,75 @@
 </header>
 
   <!-- Hero Section -->
-<section id="hero" class="relative bg-cover bg-center h-[80vh]">
+<section id="hero" class="relative bg-cover bg-center h-[80vh] bg-gray-100">
   <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center px-10 text-center">
     <div class="text-white max-w-xl">
       <h1 class="text-4xl md:text-6xl font-bold">Portraits That Tell Your Story</h1>
       <p class="mt-4 text-lg md:text-xl">Hand-drawn custom portraits from your photos, crafted with detail and emotion.</p>
-      <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4">
-        <a href="#portfolio" class="btn btn-light">View Portfolio</a>
-        <a href="#commissions" class="btn btn-primary">Request a Portrait</a>
-      </div>
+        <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4 mx-auto">
+            <a href="#portfolio" class="px-6 py-2 text-black bg-white text-gray-800 font-semibold rounded shadow hover:shadow-md transition text-center self-center sm:self-auto">View Portfolio</a>
+            <a href="#commissions" class="px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 font-semibold rounded shadow hover:shadow-md transition text-center self-center sm:self-auto">Request a Portrait</a>
+        </div>
     </div>
   </div>
 </section>
 
   <!-- About Me Section -->
-  <section class="py-16 bg-white" id="about">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-semibold mb-4">About the Artist</h2>
-      <p class="max-w-2xl mx-auto text-lg">
-        Hi! I'm <strong>[Your Brother’s Name]</strong>, a portrait artist passionate about capturing human emotion through line and light. Whether it's a memory, a gift, or a tribute, each portrait is crafted with care and attention to detail.
-      </p>
-    </div>
-  </section>
-
-  <!-- Featured Artwork -->
-  <section class="py-16 bg-gray-50" id="portfolio">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-semibold mb-6">Featured Work</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <a href="/static/images/gallery/art1.jpg" data-lightbox="portfolio"><img src="/static/images/gallery/art1.jpg" alt="Portrait 1" class="rounded shadow-md hover:shadow-lg transition"></a>
-        <a href="/static/images/gallery/art2.jpg" data-lightbox="portfolio"><img src="/static/images/gallery/art2.jpg" alt="Portrait 2" class="rounded shadow-md hover:shadow-lg transition"></a>
-        <a href="/static/images/gallery/art3.jpg" data-lightbox="portfolio"><img src="/static/images/gallery/art3.jpg" alt="Portrait 3" class="rounded shadow-md hover:shadow-lg transition"></a>
+  <section class="py-16 bg-gray-100" id="about">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 max-w-5xl mx-auto">
+      
+      <!-- Left: Rounded Image -->
+      <div class="w-full md:w-1/3">
+        <img src="/static/images/artist.jpg" alt="Artist Photo"
+             class="rounded-xl shadow-lg w-full h-auto object-cover">
       </div>
-      <a href="/portfolio" class="btn btn-outline-dark mt-6">View Full Gallery</a>
+
+      <!-- Right: Text Content -->
+      <div class="w-full md:w-2/3 text-center md:text-left">
+        <h2 class="text-3xl font-semibold mb-4">About Me</h2>
+        <p class="text-lg leading-relaxed">
+          Hi! I'm <strong>Richard Munzenzi</strong>, a portrait artist passionate about capturing human emotion through line and light.
+          Whether it's a memory, a gift, or a tribute, each portrait is crafted with care and attention to detail.
+          My goal is to create artwork that resonates with your heart and tells your unique story.
+        </p>
+
+        <!-- Learn More Button -->
+        <a href="/about" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold transition">
+          Learn more about the artist
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- Featured Artwork -->
+<section class="py-16 bg-gray-50" id="portfolio">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-semibold mb-6">Featured ArtWork</h2>
+
+    <!-- Carousel Wrapper -->
+    <div class="relative">
+      <button id="prevBtn" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-white shadow rounded-full">
+        &#8592;
+      </button>
+      <div id="artwork-carousel" class="flex gap-6 overflow-x-auto scroll-smooth py-4 px-2"></div>
+      <button id="nextBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-white shadow rounded-full">
+        &#8594;
+      </button>
+    </div>
+
+    <a href="/portfolio" class="btn btn-outline-dark mt-6">View Full Gallery</a>
+  </div>
+</section>
 
   <!-- Commission Section -->
-  <section class="py-16 bg-white" id="commissions">
+  <section class="py-16 bg-gray-100" id="commissions">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-3xl font-semibold mb-4">Commission a Portrait</h2>
       <p class="max-w-xl mx-auto mb-6 text-lg">
@@ -127,7 +158,7 @@
   <!-- Footer -->
   <footer class="bg-gray-900 text-white py-8">
     <div class="container mx-auto text-center">
-      <p class="mb-2">&copy; 2025 [Artist Name]. All rights reserved.</p>
+      <p class="mb-2">&copy; 2025 Rich Zenzi Art. All rights reserved.</p>
       <div class="space-x-4">
         <a href="/#about" class="hover:underline">About</a>
         <a href="/portfolio" class="hover:underline">Portfolio</a>
