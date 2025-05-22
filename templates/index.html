@@ -25,9 +25,9 @@
     </div>
     
     <!-- Hamburger button (mobile only) -->
-    <button id="menu-toggle" class="md:hidden text-gray-900 focus:outline-none">
-      <i data-feather="menu"></i>
-    </button>
+        <button id="menu-toggle" class="md:hidden text-gray-900 focus:outline-none" aria-expanded="false" aria-label="Toggle navigation">
+            <i id="menu-icon" data-feather="menu"></i>
+        </button>
 
     <!-- Nav links (Desktop)-->
     <nav class="hidden md:flex space-x-6 text-lg items-center">
@@ -49,23 +49,23 @@
     </nav>
 
     <!-- Mobile nav menu (hidden by default) -->
-  <div id="mobile-menu" class="md:hidden hidden bg-gray-100 px-4 pb-4">
-    <a href="/" class="block py-2 flex items-center gap-2 hover:text-gray-300">
-      <i data-feather="home"></i> Home
-    </a>
-    <a href="#about" class="block py-2 flex items-center gap-2 hover:text-gray-300">
-      <i data-feather="user"></i> About
-    </a>
-    <a href="#commissions" class="block py-2 flex items-center gap-2 hover:text-gray-300">
-      <i data-feather="edit-3"></i> Commissions
-    </a>
-    <a href="#portfolio" class="block py-2 flex items-center gap-2 hover:text-gray-300">
-      <i data-feather="image"></i> Gallery
-    </a>
-    <a href="/contact" class="block py-2 flex items-center gap-2 hover:text-gray-300">
-      <i data-feather="mail"></i> Contact
-    </a>
-  </div>
+    <div id="mobile-menu" class="md:hidden hidden flex-col bg-gray-100 px-4 pb-4 space-y-2">
+        <a href="/" class="block py-2 flex items-center gap-2 hover:text-gray-300">
+             <i data-feather="home"></i> Home
+        </a>
+        <a href="#about" class="block py-2 flex items-center gap-2 hover:text-gray-300">
+            <i data-feather="user"></i> About
+        </a>
+        <a href="#commissions" class="block py-2 flex items-center gap-2 hover:text-gray-300">
+             <i data-feather="edit-3"></i> Commissions
+        </a>
+         <a href="#portfolio" class="block py-2 flex items-center gap-2 hover:text-gray-300">
+            <i data-feather="image"></i> Gallery
+        </a>
+        <a href="/contact" class="block py-2 flex items-center gap-2 hover:text-gray-300">
+            <i data-feather="mail"></i> Contact
+        </a>
+    </div>
   </div>
 </header>
 
@@ -134,7 +134,6 @@
   <!-- custom JavaScript -->
    <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-  
+    <script src="/static/js/index.js"></script>
 </body>
 </html>
