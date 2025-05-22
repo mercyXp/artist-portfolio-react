@@ -1,0 +1,7 @@
+#hero {
+  background-image: url('/static/images/hero1.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 80vh; /* same as h-[80vh] */
+  position: relative;
+}
