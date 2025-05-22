@@ -47,7 +47,7 @@
              <i data-feather="mail"></i> Contact
         </a>
     </nav>
-    
+
     <!-- Mobile nav menu (hidden by default) -->
   <div id="mobile-menu" class="md:hidden hidden bg-gray-100 px-4 pb-4">
     <a href="/" class="block py-2 flex items-center gap-2 hover:text-gray-300">
@@ -131,15 +131,10 @@
       </div>
     </div>
   </footer>
-  <!--Feather icons for the navigation bar in the header + Mobile Toggle Script-->
-  <script src="https://unpkg.com/feather-icons"></script>
-  <script>
-    feather.replace();
-    // Mobile menu toggle
-    document.getElementById("menu-toggle").addEventListener("click", function () {
-    const menu = document.getElementById("mobile-menu");
-    menu.classList.toggle("hidden");
-  });
-  </script>
+  <!-- custom JavaScript -->
+   <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  
 </body>
 </html>
