@@ -27,8 +27,8 @@ const hero = document.getElementById('hero');
   const images = [
     '/static/images/hero1.png',
     '/static/images/hero2.png',
-    '/static/images/hero3.jpg',
-    '/static/images/hero4.jpg'
+    '/static/images/hero3.png',
+    '/static/images/hero4.png'
   ];
   let currentIndex = 0;
 
