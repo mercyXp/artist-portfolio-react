@@ -21,3 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
     feather.replace();
   });
 });
+
+// Background Images for the Hero Section
+const hero = document.getElementById('hero');
+  const images = [
+    '/static/images/hero1.jpg',
+    '/static/images/hero2.jpg',
+    '/static/images/hero3.jpg',
+    '/static/images/hero4.jpg'
+  ];
+  let currentIndex = 0;
+
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % images.length;
+    hero.style.backgroundImage = `url('${images[currentIndex]}')`;
+  }, 2000);
