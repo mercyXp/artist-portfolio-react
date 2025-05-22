@@ -18,6 +18,16 @@ artworks = [
         "title": "Silent Gaze",
         "image": "/static/images/gallery/art3.jpg",
         "description": "Charcoal · 4.5 hours"
+    },
+     {
+        "title": "Silent Gaze",
+        "image": "/static/images/gallery/art4.jpg",
+        "description": "Charcoal · 4.5 hours"
+    },
+     {
+        "title": "Silent Gaze",
+        "image": "/static/images/gallery/art5.jpg",
+        "description": "Charcoal · 4.5 hours"
     }
 ]
 
