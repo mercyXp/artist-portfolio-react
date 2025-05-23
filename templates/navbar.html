@@ -1,0 +1,51 @@
+ <!-- Sticky Navbar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-gray-100 text-gray-900 shadow-md">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <!-- Logo -->
+    <div class="text-2xl font-bold" style="font-family: 'Great Vibes', cursive;">
+      Rich Zenzi Art
+    </div>
+    
+    <!-- Hamburger button (mobile only) -->
+        <button id="menu-toggle" class="md:hidden text-gray-900 focus:outline-none" aria-expanded="false" aria-label="Toggle navigation">
+            <i id="menu-icon" data-feather="menu"></i>
+        </button>
+
+    <!-- Nav links (Desktop)-->
+    <nav class="hidden md:flex space-x-6 text-lg items-center">
+        <a href="/" class="flex items-center gap-2 hover:text-gray-300">
+             <i data-feather="home"></i> Home
+        </a>
+        <a href="/about" class="flex items-center gap-2 hover:text-gray-300">
+             <i data-feather="user"></i> About
+        </a>
+         <a href="/commissions" class="flex items-center gap-2 hover:text-gray-300">
+             <i data-feather="edit"></i> Commissions
+         </a>
+         <a href="/gallery" class="flex items-center gap-2 hover:text-gray-300">
+             <i data-feather="image"></i> Gallery
+        </a>
+        <a href="/contact" class="flex items-center gap-2 hover:text-gray-300">
+             <i data-feather="mail"></i> Contact
+        </a>
+    </nav>
+
+    <!-- Mobile nav menu (hidden by default) -->
+    <div id="mobile-menu" class="md:hidden hidden flex-col bg-gray-100 px-4 pb-4 space-y-2">
+        <a href="/" class="block py-2 flex items-center gap-2 hover:text-gray-300">
+             <i data-feather="home"></i> Home
+        </a>
+        <a href="/about" class="block py-2 flex items-center gap-2 hover:text-gray-300">
+            <i data-feather="user"></i> About
+        </a>
+        <a href="/commissions" class="block py-2 flex items-center gap-2 hover:text-gray-300">
+             <i data-feather="edit-3"></i> Commissions
+        </a>
+         <a href="/gallery" class="block py-2 flex items-center gap-2 hover:text-gray-300">
+            <i data-feather="image"></i> Gallery
+        </a>
+        <a href="/contact" class="block py-2 flex items-center gap-2 hover:text-gray-300">
+            <i data-feather="mail"></i> Contact
+        </a>
+    </div>
+  </div>

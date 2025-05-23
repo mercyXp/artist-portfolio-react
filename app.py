@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
@@ -50,7 +51,11 @@ artworks = [
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template("index.html", year=datetime.now().year)
+
+@app.route("/gallery")
+def gallery():
+     return render_template("gallery.html", year=datetime.now().year)
 
 @app.route('/api/featured-artworks')
 def featured_artworks():
