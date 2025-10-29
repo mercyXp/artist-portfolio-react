@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================
+   Root Variables for Light/Dark Themes
+   ============================= */
+:root {
+  /* Light Theme Colors */
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --muted-bg-color: #e8eaed;
+  --muted-text-color: #595959;
+
+  --primary-bg: #0c3283;
+  --primary-text: #fafafa;
+  --secondary-bg: #e6e6e6;
+  --secondary-text: #1f1f1f;
+  --accent-bg: #e2e4e9;
+  --accent-text: #0b2c75;
+  --destructive-bg: #960d0d;
+  --destructive-text: #fafafa;
+
+  --input-bg: #ffffff;
+  --input-text: #1a1a1a;
+  --input-border: #e0e0e0;
+  --input-focus-border: #0c3283;
+
+  --card-bg: #fafafa;
+  --card-text: #1a1a1a;
+  --popover-bg: #f0f0f0;
+  --popover-text: #1a1a1a;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-mono: 'Menlo', monospace;
+
+  --border-radius: 0.5rem;
+  --transition-speed: 0.3s;
+}
+
+/* Dark Theme Variables */
+body.dark-theme {
+  --bg-color: #1a1a1a;
+  --text-color: #fafafa;
+  --muted-bg-color: #2c2c2c;
+  --muted-text-color: #c0c0c0;
+
+  --primary-bg: #1b4498;
+  --primary-text: #fafafa;
+  --secondary-bg: #2c2c2c;
+  --secondary-text: #fafafa;
+  --accent-bg: #3a3a3a;
+  --accent-text: #0b2c75;
+  --destructive-bg: #960d0d;
+  --destructive-text: #fafafa;
+
+  --input-bg: #2c2c2c;
+  --input-text: #fafafa;
+  --input-border: #444444;
+  --input-focus-border: #1b4498;
+
+  --card-bg: #2c2c2c;
+  --card-text: #fafafa;
+  --popover-bg: #3a3a3a;
+  --popover-text: #fafafa;
+}
+
+/* =============================
+   Global Styles
+   ============================= */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+/* =============================
+   Navigation
+   ============================= */
+nav {
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: var(--primary-text);
+  text-decoration: none;
+  margin-left: 1rem;
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+
+nav a:hover {
+  color: var(--accent-text);
+}
+
+/* =============================
+   Buttons
+   ============================= */
+button {
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+button.primary {
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+}
+
+button.primary:hover {
+  background-color: var(--accent-bg);
+  color: var(--accent-text);
+}
+
+button.destructive {
+  background-color: var(--destructive-bg);
+  color: var(--destructive-text);
+}
+
+button.destructive:hover {
+  background-color: #a61a1a;
+}
+
+/* =============================
+   Forms
+   ============================= */
+input, textarea, select {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  font-family: var(--font-sans);
+  margin-bottom: 1rem;
+  transition: border-color var(--transition-speed), background-color var(--transition-speed);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--input-focus-border);
+  outline: none;
+}
+
+/* =============================
+   Cards
+   ============================= */
+.card {
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: background-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
+  margin-bottom: 2rem;
+}
+
+.card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* =============================
+   Popovers / Modals
+   ============================= */
+.popover {
+  background-color: var(--popover-bg);
+  color: var(--popover-text);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* =============================
+   Utility Classes
+   ============================= */
+.text-muted {
+  color: var(--muted-text-color);
+}
+
+.bg-muted {
+  background-color: var(--muted-bg-color);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =============================
+   Links
+   ============================= */
+a {
+  color: var(--primary-bg);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--accent-text);
+}
