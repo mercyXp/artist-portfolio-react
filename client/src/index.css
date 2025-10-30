@@ -41,7 +41,7 @@
 
 /* Dark Theme Variables */
 body.dark-theme {
-  --bg-color: #1a1a1a;
+  --bg-color: #1a1a1a; 
   --text-color: #fafafa;
   --muted-bg-color: #2c2c2c;
   --muted-text-color: #c0c0c0;
