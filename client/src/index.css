@@ -39,31 +39,31 @@
   --transition-speed: 0.3s;
 }
 
-/* Dark Theme Variables */
+/* Dark Theme Variables - True Black & White */
 body.dark-theme {
-  --bg-color: #1a1a1a; 
-  --text-color: #fafafa;
-  --muted-bg-color: #2c2c2c;
-  --muted-text-color: #c0c0c0;
+  --bg-color: #000000; /* True black */
+  --text-color: #ffffff; /* Pure white */
+  --muted-bg-color: #111111;
+  --muted-text-color: #cccccc;
 
   --primary-bg: #1b4498;
-  --primary-text: #fafafa;
-  --secondary-bg: #2c2c2c;
-  --secondary-text: #fafafa;
-  --accent-bg: #3a3a3a;
-  --accent-text: #0b2c75;
+  --primary-text: #ffffff;
+  --secondary-bg: #111111;
+  --secondary-text: #ffffff;
+  --accent-bg: #1a1a1a;
+  --accent-text: #4a90e2; /* Brighter blue for better contrast on black */
   --destructive-bg: #960d0d;
-  --destructive-text: #fafafa;
+  --destructive-text: #ffffff;
 
-  --input-bg: #2c2c2c;
-  --input-text: #fafafa;
-  --input-border: #444444;
-  --input-focus-border: #1b4498;
+  --input-bg: #111111;
+  --input-text: #ffffff;
+  --input-border: #333333;
+  --input-focus-border: #2d5bb9; /* Slightly brighter blue for focus */
 
-  --card-bg: #2c2c2c;
-  --card-text: #fafafa;
-  --popover-bg: #3a3a3a;
-  --popover-text: #fafafa;
+  --card-bg: #111111;
+  --card-text: #ffffff;
+  --popover-bg: #1a1a1a;
+  --popover-text: #ffffff;
 }
 
 /* =============================
@@ -178,6 +178,15 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
+/* Dark mode card shadows */
+body.dark-theme .card {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+body.dark-theme .card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
 /* =============================
    Popovers / Modals
    ============================= */
@@ -187,6 +196,11 @@ input:focus, textarea:focus, select:focus {
   border-radius: var(--border-radius);
   padding: 1rem;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Dark mode popover shadows */
+body.dark-theme .popover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
 
 /* =============================
@@ -219,7 +233,23 @@ a:hover {
   color: var(--accent-text);
 }
 
+/* Dark mode link colors */
+body.dark-theme a {
+  color: #4a90e2; /* Brighter blue for better visibility on black */
+}
+
+body.dark-theme a:hover {
+  color: #6ba8ff; /* Even brighter blue for hover */
+}
+
 /* =============================
-   custom animations
+   Custom animations
    ============================= */
-  
+
+/* Optional: Add smooth transitions for all theme-affected elements */
+* {
+  transition: background-color var(--transition-speed), 
+              color var(--transition-speed), 
+              border-color var(--transition-speed),
+              box-shadow var(--transition-speed);
+}
