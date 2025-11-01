@@ -1,4 +1,3 @@
-import React from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { FaEnvelope, FaInstagram, FaCommentDots, FaFacebook, FaYoutube, FaWhatsapp } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";

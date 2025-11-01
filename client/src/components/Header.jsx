@@ -1,10 +1,12 @@
 'use client';
 
+import { useTheme } from '@/contexts/ThemeContext';
 import { useState } from 'react';
 import ThemeToggleButton from '@/components/ThemeToggleButton';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isDark } = useTheme();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -24,7 +26,11 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[var(--primary-bg)] text-[var(--primary-text)] shadow-md transition-all duration-300">
+    <header className={`sticky top-0 z-50 shadow-md transition-all duration-300 ${
+          isDark
+            ? 'bg-gray-900 text-gray-100'
+            : 'bg-[var(--primary-bg)] text-[var(--primary-text)]'
+        }`}>
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
         <h1 className="text-xl md:text-2xl font-serif tracking-wide text-[var(--primary-text)]">
@@ -32,7 +38,11 @@ const Header = () => {
         </h1>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className={`hidden md:flex items-center space-x-6 transition-colors duration-300 ${
+            isDark
+              ? 'bg-gray-900 text-gray-100'
+              : 'bg-[var(--primary-bg)] text-[var(--primary-text)]'
+          }`}>
           {navLinks.map((link) => (
             <a
               key={link.href}
