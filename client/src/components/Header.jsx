@@ -4,7 +4,7 @@ import { useTheme } from '@/contexts/ThemeContext';
 import { useState } from 'react';
 import ThemeToggleButton from '@/components/ThemeToggleButton';
 
-const Header = () => {
+function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDark } = useTheme();
 
@@ -20,7 +20,6 @@ const Header = () => {
     { href: '#home', label: 'Home' },
     { href: '#about', label: 'About' },
     { href: '#gallery', label: 'Gallery' },
-    { href: '#catalogue', label: 'Catalogue' },
     { href: '#commissions', label: 'Commissions' },
     { href: '#contact', label: 'Contact' },
   ];

@@ -1,7 +1,6 @@
 'use client';
 
 import { useTheme } from '@/contexts/ThemeContext';
-import Avatar from '/public/images/avatar.jpg'; 
 import { ArrowRight } from 'lucide-react';
 
 function AboutMe() {
@@ -14,13 +13,13 @@ function AboutMe() {
         isDark
           ? 'bg-gray-900 text-gray-100'
           : 'bg-[var(--bg-color)] text-[var(--text-color)]'
-      }`}
+      } min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] flex items-center`}
     >
       <div className="container mx-auto flex flex-col md:flex-row items-center gap-12">
         {/* Avatar */}
         <div className="flex-shrink-0">
           <img
-            src={Avatar.src}
+            src="/images/avatar.jpg"
             alt="Richard Munzenzi"
             className="w-48 h-48 rounded-full border-4 border-[var(--primary-bg)] object-cover shadow-lg transition-transform duration-500 hover:scale-105"
           />
