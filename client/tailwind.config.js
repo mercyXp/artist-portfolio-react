@@ -1,45 +1,67 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'class', // Enables dark mode using .dark-theme or .dark class
+  darkMode: ["class", ".dark-theme"],
+
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
+
   theme: {
     extend: {
-      colors: {
-        // Map Tailwind color names to your CSS variables for dynamic theme switching
-        bg: "var(--bg-color)",
-        text: "var(--text-color)",
-        mutedBg: "var(--muted-bg-color)",
-        mutedText: "var(--muted-text-color)",
-
-        primary: "var(--primary-bg)",
-        primaryText: "var(--primary-text)",
-        secondary: "var(--secondary-bg)",
-        secondaryText: "var(--secondary-text)",
-        accent: "var(--accent-bg)",
-        accentText: "var(--accent-text)",
-        destructive: "var(--destructive-bg)",
-        destructiveText: "var(--destructive-text)",
-
-        cardBg: "var(--card-bg)",
-        cardText: "var(--card-text)",
-        popoverBg: "var(--popover-bg)",
-        popoverText: "var(--popover-text)",
-      },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
-        serif: ["Playfair Display", "serif"],
-        mono: ["Menlo", "monospace"],
+        serif: ["Cormorant Garamond", "Playfair Display", "Cinzel", "serif"],
       },
+
+      colors: {
+        bg: "var(--bg-color)",
+        text: "var(--text-color)",
+
+        muted: {
+          bg: "var(--muted-bg-color)",
+          text: "var(--muted-text-color)",
+        },
+
+        primary: {
+          DEFAULT: "var(--primary-accent)",
+          hover: "var(--primary-accent-hover)",
+        },
+
+        nav: {
+          bg: "var(--nav-bg)",
+          text: "var(--nav-text)",
+        },
+
+        hero: {
+          bg: "var(--hero-bg)",
+          text: "var(--hero-text)",
+        },
+
+        footer: {
+          bg: "var(--footer-bg)",
+          text: "var(--footer-text)",
+        },
+
+        card: {
+          bg: "var(--card-bg)",
+          text: "var(--card-text)",
+        },
+
+        input: {
+          border: "var(--input-border)",
+        },
+      },
+
       borderRadius: {
-        md: "var(--border-radius)",
+        general: "var(--border-radius)",
       },
+
       transitionDuration: {
-        DEFAULT: "300ms",
+        fast: "var(--transition-speed)",
       },
     },
   },
+
   plugins: [],
 };

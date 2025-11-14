@@ -2,252 +2,302 @@
 @tailwind components;
 @tailwind utilities;
 
-/* =============================
-   Root Variables for Light/Dark Themes
-   ============================= */
+/* ============================================
+   FONT IMPORTS (Make sure these load in <head>)
+   ============================================ */
+/* serif fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Cinzel:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ============================================
+   ROOT VARIABLES (LIGHT THEME DEFAULT)
+   ============================================ */
 :root {
-  /* Light Theme Colors */
-  --bg-color: #ffffff;
-  --text-color: #1a1a1a;
-  --muted-bg-color: #f5f5f5;
+  --bg-color: #fafafa;
+  --text-color: #000000;
+
+  --muted-bg-color: #f1f0ee;
   --muted-text-color: #555555;
 
-  --primary-bg: #0c3283; /* Main Blue */
-  --primary-text: #ffffff;
-  --secondary-bg: #e6e6e6; 
-  --secondary-text: #1f1f1f;
-  --accent-bg: #f0f4ff; /* subtle light accent */
-  --accent-text: #2c3e50; /* dark blue-grey accent */
-  --destructive-bg: #960d0d;
-  --destructive-text: #ffffff;
+  --primary-accent: #1666FF;
+  --primary-accent-hover: #1a8cff;
 
-  --input-bg: #ffffff;
-  --input-text: #1a1a1a;
-  --input-border: #d1d5db;
-  --input-focus-border: #0c3283;
+  --nav-bg: #ffffff;
+  --nav-text: #1f1f1f;
 
-  --card-bg: #fafafa;
-  --card-text: #1a1a1a;
-  --popover-bg: #f0f0f0;
-  --popover-text: #1a1a1a;
+  --hero-bg: #f9f8f6;
+  --hero-text: #2a2a2a;
 
-  /* Font Families */
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-serif: 'Playfair Display', serif;
-  --font-mono: 'Menlo', monospace;
+  --footer-bg: #1c1c1c;
+  --footer-text: #f9f8f6;
 
-  --border-radius: 0.5rem;
+  --card-bg: #ffffff;
+  --card-text: #2a2a2a;
+
+  --input-border: #dcd7d3;
+
+  --border-radius: 0.4rem;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', 'Cinzel', serif;
+
   --transition-speed: 0.3s;
 }
 
-/* Dark Theme Variables */
+/* ============================================
+   DARK THEME OVERRIDES
+   ============================================ */
 body.dark-theme {
-  --bg-color: #111827; /* Dark blue-gray instead of pure black */
-  --text-color: #f5f5f5;
-  --muted-bg-color: #1f2937;
-  --muted-text-color: #d1d5db;
+  --bg-color: #000000;
+  --text-color: #eaeaea;
 
-  --primary-bg: #1b4498;
-  --primary-text: #ffffff;
-  --secondary-bg: #1f2937;
-  --secondary-text: #ffffff;
-  --accent-bg: #1a1a1a;
-  --accent-text: #4a90e2; /* bright blue accent */
-  --destructive-bg: #960d0d;
-  --destructive-text: #ffffff;
+  --muted-bg-color: #000000;
+  --muted-text-color: #b3b3b3;
 
-  --input-bg: #1f2937;
-  --input-text: #f5f5f5;
-  --input-border: #374151;
-  --input-focus-border: #2d5bb9;
+  --primary-accent: #e4c28a;
+  --primary-accent-hover: #ffd89c;
 
-  --card-bg: #1f2937;
-  --card-text: #f5f5f5;
-  --popover-bg: #111827;
-  --popover-text: #f5f5f5;
+  --nav-bg: #000000;
+  --nav-text: #f5f5f5;
+
+  --hero-bg: #000000;
+  --hero-text: #f5f5f5;
+
+  --footer-bg: #000000;
+  --footer-text: #f1f1f1;
+
+  --card-bg: #0f0f0f;
+  --card-text: #eaeaea;
+
+  --input-border: #333333;
 }
 
-/* =============================
-   Global Styles
-   ============================= */
+/* ============================================
+   GLOBAL STYLING
+   ============================================ */
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: var(--font-sans);
-  line-height: 1.6;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.8;
   margin: 0;
-  padding: 0;
   transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  color: var(--text-color);
-  margin-bottom: 1rem;
+/* Smooth global UI transitions */
+* {
+  transition: background-color var(--transition-speed),
+              color var(--transition-speed),
+              border-color var(--transition-speed),
+              box-shadow var(--transition-speed);
+  -webkit-text-size-adjust: 100%;
 }
 
-/* =============================
-   Navigation
-   ============================= */
+/* ============================================
+   NAVIGATION BAR
+   ============================================ */
 nav {
-  background-color: var(--primary-bg);
-  color: var(--primary-text);
-  padding: 1rem 2rem;
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1.2rem 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 nav a {
-  color: var(--primary-text);
+  color: var(--nav-text);
   text-decoration: none;
-  margin-left: 1rem;
-  font-weight: 500;
-  transition: color var(--transition-speed);
+  margin-left: 2rem;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  opacity: 0.85;
 }
 
 nav a:hover {
-  color: var(--accent-text);
+  color: var(--primary-accent);
+  opacity: 1;
 }
 
-/* =============================
-   Buttons
-   ============================= */
-button {
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--border-radius);
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-sans);
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  background-color: var(--hero-bg);
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: 3.2rem;
   font-weight: 600;
-  transition: background-color var(--transition-speed), color var(--transition-speed);
+  color: var(--primary-accent);
+  letter-spacing: 1.2px;
 }
 
-button.primary {
-  background-color: var(--primary-bg);
-  color: var(--primary-text);
+.hero p {
+  color: var(--hero-text);
+  max-width: 700px;
+  margin: 1rem auto 2.5rem auto;
+  font-size: 1.2rem;
+  line-height: 1.9;
 }
 
-button.primary:hover {
-  background-color: var(--accent-bg);
-  color: var(--accent-text);
+.hero p:hover {
+  color: var(--primary-accent-hover);
 }
 
-button.destructive {
-  background-color: var(--destructive-bg);
-  color: var(--destructive-text);
-}
-
-button.destructive:hover {
-  background-color: #a61a1a;
-}
-
-/* =============================
-   Forms
-   ============================= */
-input, textarea, select {
-  width: 100%;
-  padding: 0.7rem;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--input-border);
-  background-color: var(--input-bg);
-  color: var(--input-text);
-  font-family: var(--font-sans);
-  margin-bottom: 1rem;
-  transition: border-color var(--transition-speed), background-color var(--transition-speed);
-}
-
-input:focus, textarea:focus, select:focus {
-  border-color: var(--input-focus-border);
-  outline: none;
-}
-
-/* =============================
-   Cards
-   ============================= */
+/* ============================================
+   CARDS (Artworks, etc.)
+   ============================================ */
 .card {
   background-color: var(--card-bg);
   color: var(--card-text);
   border-radius: var(--border-radius);
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: background-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
-  margin-bottom: 2rem;
+  padding: 2rem;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.07);
 }
 
 .card:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
-/* Dark mode card shadows */
-body.dark-theme .card {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  text-align: center;
+  padding: 3rem 2rem;
 }
 
-body.dark-theme .card:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+footer a {
+  color: var(--primary-accent);
 }
 
-/* =============================
-   Popovers / Modals
-   ============================= */
-.popover {
-  background-color: var(--popover-bg);
-  color: var(--popover-text);
-  border-radius: var(--border-radius);
-  padding: 1rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+footer a:hover {
+  color: var(--primary-accent-hover);
 }
 
-body.dark-theme .popover {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-}
-
-/* =============================
-   Utility Classes
-   ============================= */
-.text-muted {
-  color: var(--muted-text-color);
-}
-
-.bg-muted {
-  background-color: var(--muted-bg-color);
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* =============================
-   Links
-   ============================= */
+/* ============================================
+   LINKS
+   ============================================ */
 a {
-  color: var(--primary-bg);
-  text-decoration: none;
-  transition: color var(--transition-speed);
+  color: var(--primary-accent);
 }
 
 a:hover {
-  color: var(--accent-text);
+  color: var(--primary-accent-hover);
+}
+/* ============================================
+   FORMS (Inputs, Textareas, Buttons)
+   ============================================ */
+
+/* Form Container */
+form {
+  width: 100%;
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 
-/* Dark mode link colors */
-body.dark-theme a {
-  color: #4a90e2;
+/* Labels */
+form label {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 0.4rem;
 }
 
-body.dark-theme a:hover {
-  color: #6ba8ff;
-}
-
-/* =============================
-   Smooth Transitions for Theme Changes
-   ============================= */
-* {
-  transition: background-color var(--transition-speed), 
-              color var(--transition-speed), 
-              border-color var(--transition-speed),
+/* Inputs + Textareas */
+input,
+textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--input-border);
+  background-color: var(--muted-bg-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  color: var(--text-color);
+  outline: none;
+  transition: border-color var(--transition-speed), 
+              background-color var(--transition-speed),
+              color var(--transition-speed),
               box-shadow var(--transition-speed);
+}
+
+/* Input & Textarea Hover */
+input:hover,
+textarea:hover {
+  border-color: var(--primary-accent);
+}
+
+/* Input & Textarea Focus */
+input:focus,
+textarea:focus {
+  border-color: var(--primary-accent);
+  box-shadow: 0 0 6px rgba(0,0,0,0.15);
+}
+
+/* Textarea Sizing */
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Submit Button */
+button,
+input[type="submit"] {
+  background-color: var(--primary-accent);
+  color: #ffffff;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  border: none;
+  border-radius: calc(var(--border-radius) + 0.1rem);
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color var(--transition-speed), 
+              transform var(--transition-speed);
+}
+
+/* Button Hover */
+button:hover,
+input[type="submit"]:hover {
+  background-color: var(--primary-accent-hover);
+  transform: translateY(-2px);
+}
+
+/* Disabled button */
+button:disabled,
+input[type="submit"]:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Error + Success Text */
+.form-error {
+  color: #ff6961;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+.form-success {
+  color: #4caf50;
+  font-size: 1rem;
+  margin-top: 0.5rem;
 }

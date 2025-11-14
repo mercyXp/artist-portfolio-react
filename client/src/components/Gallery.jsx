@@ -69,7 +69,7 @@ function Gallery() {
           }`}
         >
           Every piece below tells a unique story — drawn with passion, precision,
-          and purpose. Dive into my creative process and feel the rhythm of each line.
+          and purpose. Dive in and experience the art that defines my journey.
         </p>
       </div>
 

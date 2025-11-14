@@ -16,9 +16,14 @@ function ContactForm() {
       <div className="max-w-4xl mx-auto">
         {/* Section Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl text-white md:text-5xl font-serif font-bold mb-4 transition-colors duration-300">
+         <h2
+            className={`text-4xl md:text-5xl font-serif font-bold mb-4 transition-colors duration-300 ${
+              isDark ? 'text-white' : 'text-black'
+            }`}
+          >
             Get in Touch
-          </h2>
+        </h2>
+
           <p className={`text-lg md:text-xl ${isDark ? 'text-gray-300' : 'text-[var(--muted-text-color)]'}`}>
             Have a question or want a custom piece? Let's bring your ideas to life!
           </p>
