@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { supabase } from '@/lib/supabase';
-import { ArrowLeft, Plus, Trash2, Image as ImageIcon, Video, FileText, Mail, Lock, LogOut } from 'lucide-react';
+import { ArrowLeft, Plus, Trash2, Image as ImageIcon, Video, FileText, Mail, Lock, LogOut, UploadCloud } from 'lucide-react';
 
 // Design easing and motion configurations
 const easeStandard = [0.4, 0, 0.2, 1];
@@ -80,6 +80,96 @@ export default function AdminPortal() {
   const [artDesc, setArtDesc] = useState('');
   const [artSrc, setArtSrc] = useState('');
   const [artDuration, setArtDuration] = useState('');
+
+  // Drag & drop upload state
+  const [isDragging, setIsDragging] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDrop = async (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      const file = e.dataTransfer.files[0];
+      if (file.type.startsWith('image/')) {
+        await handleImageUpload(file);
+      } else {
+        setMsg({ type: 'error', text: 'Unsupported file type. Please select a valid image.' });
+      }
+    }
+  };
+
+  const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      if (file.type.startsWith('image/')) {
+        await handleImageUpload(file);
+      } else {
+        setMsg({ type: 'error', text: 'Unsupported file type. Please select a valid image.' });
+      }
+    }
+  };
+
+  const handleImageUpload = async (file: File) => {
+    setUploadingImage(true);
+    setMsg(null);
+    
+    try {
+      const bucketName = 'portfolio';
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}.${fileExt}`;
+      const filePath = `artworks/${fileName}`;
+
+      // Upload file to Supabase Cloud Storage
+      const { data, error } = await supabase.storage
+        .from(bucketName)
+        .upload(filePath, file, {
+          cacheControl: '3600',
+          upsert: false
+        });
+
+      if (error) {
+        throw new Error(error.message);
+      }
+
+      // Get public accessible link
+      const { data: { publicUrl } } = supabase.storage
+        .from(bucketName)
+        .getPublicUrl(filePath);
+
+      setArtSrc(publicUrl);
+      setMsg({ type: 'success', text: 'Image successfully uploaded to Supabase Cloud Storage!' });
+    } catch (err: any) {
+      console.warn('Storage upload failed, fallback to direct Base64 embedding:', err.message);
+      
+      // Standalone base64 encoder fallback - works instantly offline without bucket setup
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (typeof reader.result === 'string') {
+          setArtSrc(reader.result);
+          setMsg({ 
+            type: 'success', 
+            text: 'Image encoded directly as Base64. (Setup a public "portfolio" bucket in Supabase Storage to enable permanent cloud links!).' 
+          });
+        }
+      };
+      reader.onerror = () => {
+        setMsg({ type: 'error', text: 'Could not process the selected image.' });
+      };
+      reader.readAsDataURL(file);
+    } finally {
+      setUploadingImage(false);
+    }
+  };
 
   // Process Video Form State
   const [videoTitle, setVideoTitle] = useState('');
@@ -463,17 +553,72 @@ export default function AdminPortal() {
 
                 <div>
                   <label className="block mb-1.5 font-sans font-bold text-[10px] tracking-widest uppercase text-[#5a544d]">
-                    Image File Path or URL *
+                    Artwork Image Upload *
                   </label>
-                  <input
-                    type="text"
-                    required
-                    disabled={submitting}
-                    value={artSrc}
-                    onChange={(e) => setArtSrc(e.target.value)}
-                    placeholder="e.g. /images/draw-1.jpg"
-                    className="p-3 w-full text-xs tracking-wide text-[#1a1612] bg-white border border-[#c9a96e]/20 rounded-none focus:outline-none focus:border-[#c9a96e] transition-colors duration-200"
-                  />
+                  
+                  <div
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
+                    className={`p-6 border border-dashed text-center flex flex-col items-center justify-center cursor-pointer transition-all duration-300 relative bg-white/20 hover:bg-white/40 ${
+                      isDragging ? 'border-[#c9a96e] bg-white/50 scale-[1.01]' : 'border-[#c9a96e]/30'
+                    }`}
+                    onClick={() => document.getElementById('artwork-file-input')?.click()}
+                  >
+                    <input
+                      id="artwork-file-input"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileSelect}
+                      className="hidden"
+                    />
+                    
+                    {uploadingImage ? (
+                      <div className="flex flex-col items-center">
+                        <div className="w-6 h-6 border-2 border-[#c9a96e] border-t-transparent animate-spin rounded-full mb-2"></div>
+                        <p className="text-[10px] tracking-wider text-[#5a544d] uppercase font-bold">Uploading file...</p>
+                      </div>
+                    ) : artSrc ? (
+                      <div className="w-full flex flex-col items-center">
+                        <div className="w-16 h-20 mb-2 border border-[#c9a96e]/30 overflow-hidden relative shadow-md bg-white p-1 flex-shrink-0">
+                          <img
+                            src={artSrc}
+                            alt="Upload preview"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <p className="text-[9px] font-bold text-[#c9a96e] tracking-widest uppercase truncate max-w-[200px]">
+                          Image Loaded Successfully
+                        </p>
+                        <p className="text-[9px] text-[#5a544d] mt-0.5 italic">
+                          Click or drop another file to change
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col items-center">
+                        <UploadCloud size={24} className="text-[#c9a96e] mb-2" />
+                        <p className="text-[11px] font-medium text-[#2d2926] tracking-wide">
+                          Drag & drop image here
+                        </p>
+                        <p className="text-[9px] text-[#5a544d] mt-1 uppercase tracking-widest">
+                          or click to choose from PC
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Manual input fallback */}
+                  <div className="mt-3">
+                    <input
+                      type="text"
+                      required
+                      disabled={submitting}
+                      value={artSrc}
+                      onChange={(e) => setArtSrc(e.target.value)}
+                      placeholder="Or manual path/URL (e.g. /images/draw-1.jpg)"
+                      className="p-3 w-full text-xs tracking-wide text-[#1a1612] bg-white border border-[#c9a96e]/20 rounded-none focus:outline-none focus:border-[#c9a96e] transition-colors duration-200"
+                    />
+                  </div>
                 </div>
 
                 <div>
